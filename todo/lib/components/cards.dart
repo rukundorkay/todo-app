@@ -18,7 +18,7 @@ class dashboardCard extends StatelessWidget {
         children: [
           Text(
             number,
-            style: TextStyle(
+            style: const TextStyle(
                 color: primarycolor, fontSize: 22, fontWeight: FontWeight.w900),
           ),
           Text(

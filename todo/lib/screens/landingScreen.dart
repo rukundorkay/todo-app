@@ -3,6 +3,7 @@ import 'package:todo/color.dart';
 import 'package:todo/components/appbar.dart';
 import 'package:todo/components/cards.dart';
 import 'package:todo/components/floatingbutton.dart';
+import 'package:todo/screens/newTaskScreen.dart';
 
 class LandingScreen extends StatefulWidget {
   LandingScreen({Key? key}) : super(key: key);
@@ -64,10 +65,11 @@ class _LandingScreenState extends State<LandingScreen> {
 
                       // Generate 100 widgets that display their index in the List.
                       children: const [
-                        dashboardCard(number: "10", text: "active task"),
-                        dashboardCard(number: "10", text: "active task"),
-                        dashboardCard(number: "10", text: "active task"),
-                        dashboardCard(number: "10", text: "active task"),
+                        dashboardCard(number: "0", text: "Total Task"),
+                        dashboardCard(number: "0", text: "active task"),
+                        dashboardCard(number: "0", text: "Task Done"),
+                        dashboardCard(
+                            number: "0", text: "active High priority"),
                       ],
                     ),
                     Padding(
@@ -75,11 +77,23 @@ class _LandingScreenState extends State<LandingScreen> {
                       child: Center(
                         child: Column(
                           children: [
-                            const Text("NOTHING HERE"),
+                            const Text(
+                              "NOTHING HERE",
+                              style: TextStyle(
+                                  color: darkprimarycolor,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w900),
+                            ),
                             const SizedBox(
                               height: 10,
                             ),
-                            const Text("Just you crush Replies"),
+                            const Text(
+                              "Just like you crush Replies",
+                              style: TextStyle(
+                                  color: darkprimarycolor,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500),
+                            ),
                             const SizedBox(
                               height: 30,
                             ),
@@ -89,7 +103,13 @@ class _LandingScreenState extends State<LandingScreen> {
                                     MaterialStateProperty.all<Color>(
                                         Colors.black),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            NewTaskScreen()));
+                              },
                               child: const Text(
                                 "START WITH A NEW TASK",
                                 style: TextStyle(

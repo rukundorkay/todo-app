@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/screens/newTaskScreen.dart';
+import 'package:todo/screens/taskDetails.dart';
 
 class floatingButton extends StatelessWidget {
   const floatingButton({
@@ -11,8 +12,10 @@ class floatingButton extends StatelessWidget {
     return FloatingActionButton(
       backgroundColor: Colors.black,
       onPressed: () {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => NewTaskScreen()));
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+                builder: (BuildContext context) => NewTaskScreen()));
       },
       tooltip: 'add new item',
       child: const Icon(

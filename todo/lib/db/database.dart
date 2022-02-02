@@ -34,7 +34,8 @@ CREATE TABLE $tableTodo(
   ${TodoFields.priority} $textType,
   ${TodoFields.createdDate} $textType,
   ${TodoFields.description} $textType,
-  ${TodoFields.modifiedDate} $textType
+  ${TodoFields.modifiedDate} $textType,
+  ${TodoFields.status} $textType
   )
 ''');
   }
@@ -62,6 +63,19 @@ CREATE TABLE $tableTodo(
     } else {
       throw Exception('ID $id not found');
     }
+  }
+
+  Future<List<Todo>> readTodoStatus(String status) async {
+    final db = await instance.database;
+
+    final maps = await db.query(
+      tableTodo,
+      columns: TodoFields.values,
+      where: '${TodoFields.status} = ?',
+      whereArgs: [status],
+    );
+
+    return maps.map((json) => Todo.fromJson(json)).toList();
   }
 
   Future<List<Todo>> readAllTodos() async {

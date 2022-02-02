@@ -5,12 +5,19 @@ import 'package:todo/components/cards.dart';
 import 'package:todo/components/floatingbutton.dart';
 import 'package:todo/components/todoList.dart';
 import 'package:intl/intl.dart';
+import 'package:todo/db/database.dart';
+
+import 'landingScreen.dart';
 
 var todos = [];
+int? totalTask = 0;
+int? activeTask = 0;
+int? taskDone = 0;
 
 class LandingTaskScreen extends StatefulWidget {
-  LandingTaskScreen({Key? key, required this.listOfTodos}) : super(key: key);
-  final listOfTodos;
+  LandingTaskScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<LandingTaskScreen> createState() => _LandingTaskScreenState();
@@ -22,13 +29,22 @@ class _LandingTaskScreenState extends State<LandingTaskScreen> {
   @override
   void initState() {
     super.initState();
-    setState(() {
-      todos = widget.listOfTodos;
-    });
+    getListoftodos();
+  }
 
-    // for (var a in widget.listOfTodos) {
-    //   print(a.title);
-    // }
+  Future<void> getListoftodos() async {
+    var result = await TodoDatabase.instance.readAllTodos();
+    var activeStatus = await TodoDatabase.instance.readTodoStatus("NO");
+    if (result.isEmpty) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => LandingScreen()));
+    }
+    setState(() {
+      todos = result;
+      totalTask = result.length;
+      activeTask = activeStatus.length;
+      taskDone = totalTask! - activeTask!;
+    });
   }
 
   @override
@@ -80,10 +96,11 @@ class _LandingTaskScreenState extends State<LandingTaskScreen> {
                       childAspectRatio: 1.2,
 
                       // Generate 100 widgets that display their index in the List.
-                      children: const [
-                        dashboardCard(number: "24", text: "Total Task"),
-                        dashboardCard(number: "10", text: "Active Task"),
-                        dashboardCard(number: "30", text: "Task Done"),
+                      children: [
+                        dashboardCard(number: "$totalTask", text: "Total Task"),
+                        dashboardCard(
+                            number: "$activeTask", text: "Active Task"),
+                        dashboardCard(number: "$taskDone", text: "Task Done"),
                       ],
                     ),
                     Container(

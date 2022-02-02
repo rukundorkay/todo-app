@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigatorhome() async {
-    await Future.delayed(const Duration(milliseconds: 1500), () {});
+    await Future.delayed(const Duration(milliseconds: 3000), () {});
     if (numberOfTodos == 0) {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => LandingScreen()));
@@ -41,9 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-              builder: (context) => LandingTaskScreen(
-                    listOfTodos: listOfTodos,
-                  )));
+              builder: (BuildContext context) => LandingTaskScreen()));
     }
   }
 

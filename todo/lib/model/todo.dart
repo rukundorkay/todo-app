@@ -3,7 +3,7 @@ const String tableTodo = 'todo';
 class TodoFields {
   static final List<String> values = [
     /// Add all fields
-    id, title, priority, createdDate, description, modifiedDate
+    id, title, priority, createdDate, description, modifiedDate, status
   ];
 
   static const String id = '_id';
@@ -12,6 +12,7 @@ class TodoFields {
   static const String createdDate = 'createdDate';
   static const String description = 'description';
   static const String modifiedDate = 'modifiedDate';
+  static const String status = 'status';
 }
 
 class Todo {
@@ -21,6 +22,7 @@ class Todo {
   final DateTime createdDate;
   final String description;
   final DateTime modifiedDate;
+  final String status;
 
   const Todo({
     this.id,
@@ -29,6 +31,7 @@ class Todo {
     required this.createdDate,
     required this.description,
     required this.modifiedDate,
+    required this.status,
   });
 
   Todo copy({
@@ -38,6 +41,7 @@ class Todo {
     DateTime? createdDate,
     String? description,
     DateTime? modifiedDate,
+    String? status,
   }) =>
       Todo(
         id: id ?? this.id,
@@ -46,6 +50,7 @@ class Todo {
         createdDate: createdDate ?? this.createdDate,
         description: description ?? this.description,
         modifiedDate: modifiedDate ?? this.modifiedDate,
+        status: status ?? this.status,
       );
 
   static Todo fromJson(Map<String, Object?> json) => Todo(
@@ -55,6 +60,7 @@ class Todo {
         createdDate: DateTime.parse(json[TodoFields.createdDate] as String),
         description: json[TodoFields.description] as String,
         modifiedDate: DateTime.parse(json[TodoFields.modifiedDate] as String),
+        status: json[TodoFields.status] as String,
       );
 
   Map<String, Object?> toJson() => {
@@ -64,5 +70,6 @@ class Todo {
         TodoFields.priority: priority,
         TodoFields.description: description,
         TodoFields.modifiedDate: modifiedDate.toIso8601String(),
+        TodoFields.status: status
       };
 }

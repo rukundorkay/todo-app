@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:todo/color.dart';
-import 'package:todo/components/dialogBox.dart';
+
 import 'package:todo/db/database.dart';
 import 'package:todo/model/todo.dart';
+
+import 'landingTaskScreen.dart';
 
 var imageFile;
 final title = TextEditingController();
@@ -50,7 +52,13 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: const Icon(Icons.arrow_back),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => LandingTaskScreen()))
+          },
+        ),
       ),
       body: SafeArea(
           child: Container(
@@ -213,22 +221,6 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                   ),
                 ),
               ],
-
-              // onChanged: (option) {
-              //   if (option == 'location') {
-              //     //values = locationList;
-              //   } else if (option == 'owner') {
-              //     //values = ownerList;
-              //   } else if (option == 'rating') {
-              //     //values = ratingList;
-              //   } else {
-              //     //values = [];
-              //   }
-              //   // setState(() {
-              //   //   selectedValue = null;
-              //   //   selectedOption = option;
-              //   //}
-              // },
             ),
             ButtonBar(
               alignment: MainAxisAlignment.start,
@@ -253,13 +245,24 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                       });
                     } else {
                       final todo = Todo(
-                        title: title.text,
-                        priority: priority,
-                        createdDate: DateTime.now(),
-                        description: description.text,
-                        modifiedDate: DateTime.now(),
-                      );
+                          title: title.text,
+                          priority: priority,
+                          createdDate: DateTime.now(),
+                          description: description.text,
+                          modifiedDate: DateTime.now(),
+                          status: "NO");
                       var result = await TodoDatabase.instance.create(todo);
+                      setState(() {
+                        var imageFile = null;
+                        final title = null;
+                        final description = null;
+                        var priority = null;
+                      });
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  LandingTaskScreen()));
                       // print(result.length);
                     }
                   },
