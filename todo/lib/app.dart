@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo/screens/SplashScreen.dart';
+import 'package:todo/screens/landingScreen.dart';
+import 'package:todo/screens/landingTaskScreen.dart';
+import 'package:todo/screens/newTaskScreen.dart';
 
 import 'components/theme.dart';
 
@@ -12,7 +15,7 @@ class Todo extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Todo App",
       // home: ,
-      initialRoute: '/login',
+      initialRoute: '/splash',
       onGenerateRoute: _getRoute,
       theme: TodoTheme,
       // builder: EasyLoading.init(),
@@ -21,7 +24,7 @@ class Todo extends StatelessWidget {
 }
 
 Route<dynamic>? _getRoute(RouteSettings settings) {
-  if (settings.name != '/login') {
+  if (settings.name != '/splash') {
     return null;
   }
 
