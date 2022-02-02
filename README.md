@@ -40,7 +40,7 @@ prepare flutter and download all required dependencies that are listed in pubspe
 
 you are almost done !
 
-- in command prompt run `flutter run or press ctrl+shift+f5`
+- in command prompt run `flutter run ` or press ctrl+shift+f5
 
 
 # Author :computer:
