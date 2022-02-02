@@ -28,11 +28,9 @@ before you try to run this project on your local machine  , you should atleast h
 
 - [install flutter and other important program](https://docs.flutter.dev/get-started/install/windows)
 
-clone or Download this project
-
-- [git clone ](https://github.com/rukundorkay/todo-app.git)
 
 
+- clone or Download this project  `git clone https://github.com/rukundorkay/todo-app.git `
 
 - Navigate into todo directory `cd todo` 
 
