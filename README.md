@@ -11,6 +11,12 @@ To-Do App is  used to maintain our day-to-day tasks or list everything that we h
 The To-Do App should allow the following operations on a todo item:
 Create, Update, Read, Delete
 
+# Technologies :gear:
+| stack       | Database(local)| state management|
+| ---------   | -----------    | -----------     |
+| flutter     | sqlite         | redux           |
+
+
 ## New to flutter  
 
 A few resources to get you started if this is your first Flutter project:
