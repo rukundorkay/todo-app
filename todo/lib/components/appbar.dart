@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/color.dart';
 
-AppBar buildAppBar(_scaffoldKey) {
+AppBar buildAppBar(_scaffoldKey, Function() filter) {
   return AppBar(
     shadowColor: Color(0),
     leadingWidth: 100.0,
@@ -16,7 +16,9 @@ AppBar buildAppBar(_scaffoldKey) {
     ),
     actions: <Widget>[
       IconButton(
-          onPressed: () {},
+          onPressed: () {
+            filter();
+          },
           icon: const Icon(
             Icons.search,
             color: textprimarycolor,

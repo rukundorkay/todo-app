@@ -19,7 +19,7 @@ class _LandingScreenState extends State<LandingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: const floatingButton(),
-      appBar: buildAppBar(_scaffoldKey),
+      appBar: buildAppBar(_scaffoldKey, filter),
       body: SafeArea(
         child: Stack(
           children: [
@@ -129,5 +129,9 @@ class _LandingScreenState extends State<LandingScreen> {
         ),
       ),
     );
+  }
+
+  void filter() {
+    print("empty");
   }
 }

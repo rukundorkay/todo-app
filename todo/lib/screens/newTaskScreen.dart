@@ -253,10 +253,9 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                           status: "NO");
                       var result = await TodoDatabase.instance.create(todo);
                       setState(() {
-                        var imageFile = null;
-                        final title = null;
-                        final description = null;
-                        var priority = null;
+                        imageFile = null;
+                        title.clear();
+                        description.clear();
                       });
                       Navigator.push(
                           context,

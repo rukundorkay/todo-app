@@ -155,7 +155,7 @@ Future<void> deleteDialog(BuildContext context, int id) {
                 ListTile(
                   onTap: () async {
                     var result = await TodoDatabase.instance.delete(id);
-                    Navigator.push(
+                    Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (BuildContext context) =>

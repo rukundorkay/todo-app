@@ -51,7 +51,7 @@ class _LandingTaskScreenState extends State<LandingTaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: const floatingButton(),
-      appBar: buildAppBar(_scaffoldKey),
+      appBar: buildAppBar(_scaffoldKey, filter),
       body: SafeArea(
         child: Stack(
           children: [
@@ -123,5 +123,14 @@ class _LandingTaskScreenState extends State<LandingTaskScreen> {
         ),
       ),
     );
+  }
+
+  void filter() {
+    var results =
+        todos.where((user) => user["priority"].contains('low')).toList();
+
+    setState(() {
+      todos = results;
+    });
   }
 }
