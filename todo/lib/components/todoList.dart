@@ -11,14 +11,21 @@ class todoList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
       return GestureDetector(
-        onTap: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => TaskDetail(todo: todo))),
+        onTap:
+            // (todo.status == "NO")
+            //
+            () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => TaskDetail(todo: todo)));
+        },
         child: Row(
           children: [
             Column(
-              children: const [
+              children: [
                 Icon(
-                  Icons.check_box_outlined,
+                  (todo.status == "Yes")
+                      ? Icons.check_box
+                      : Icons.check_box_outlined,
                   color: darkprimarycolor,
                 )
               ],
@@ -80,6 +87,11 @@ class todoList extends StatelessWidget {
                 ],
               ),
             ),
+            Row(
+              children: [
+                Divider(),
+              ],
+            )
           ],
         ),
       );

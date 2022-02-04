@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:todo/color.dart';
 
-AppBar buildAppBar(_scaffoldKey, Function() filter) {
+AppBar buildAppBar(_scaffoldKey) {
   return AppBar(
     shadowColor: Color(0),
     leadingWidth: 100.0,
     leading: Card(
+      shadowColor: darkprimarycolor,
       color: darkprimarycolor,
       child: Padding(
         padding: const EdgeInsets.all(5.0),
@@ -16,9 +17,7 @@ AppBar buildAppBar(_scaffoldKey, Function() filter) {
     ),
     actions: <Widget>[
       IconButton(
-          onPressed: () {
-            filter();
-          },
+          onPressed: () {},
           icon: const Icon(
             Icons.search,
             color: textprimarycolor,

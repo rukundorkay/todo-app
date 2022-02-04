@@ -51,7 +51,7 @@ class _LandingTaskScreenState extends State<LandingTaskScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: const floatingButton(),
-      appBar: buildAppBar(_scaffoldKey, filter),
+      appBar: buildAppBar(_scaffoldKey),
       body: SafeArea(
         child: Stack(
           children: [
@@ -94,8 +94,6 @@ class _LandingTaskScreenState extends State<LandingTaskScreen> {
                       crossAxisCount: 3,
                       padding: const EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
                       childAspectRatio: 1.2,
-
-                      // Generate 100 widgets that display their index in the List.
                       children: [
                         dashboardCard(number: "$totalTask", text: "Total Task"),
                         dashboardCard(

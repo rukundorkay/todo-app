@@ -1,8 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:todo/color.dart';
 
 import 'package:todo/db/database.dart';
@@ -11,6 +14,7 @@ import 'package:todo/model/todo.dart';
 import 'landingTaskScreen.dart';
 
 var imageFile;
+String? pictureLocation;
 final title = TextEditingController();
 final description = TextEditingController();
 var priority;
@@ -244,6 +248,9 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                             : titlevalidate = false;
                       });
                     } else {
+                      print(imageFile);
+                      // pictureLocation = base64Encode(imageFile);
+                      // print(pictureLocation);
                       final todo = Todo(
                           title: title.text,
                           priority: priority,
